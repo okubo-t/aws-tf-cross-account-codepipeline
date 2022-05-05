@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo $AWS_ACCOUNT_ID
+      - echo $AWS_DEFAULT_REGION
+      - echo $ENVIRONMENT
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - ls -al
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo "cross account codepipeline test" > artifacts.txt
+
+artifacts:
+  files: artifacts.txt
